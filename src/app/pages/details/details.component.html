@@ -4,29 +4,31 @@
     <span>Back</span>
   </button>
   <div class="countryDetails">
-    <img src="https://flagcdn.com/de.svg" alt="" class="countryFlag">
+    <img [src]="flag" alt="" class="countryFlag">
     <div class="countryInfos">
-      <p class="countryName">Belgium</p>
+      <p class="countryName">{{name}}</p>
       <div>
         <div class="firstInfos">
-          <p><span>Native Name: </span>Belgiê</p>
-          <p><span>Population: </span>11.319.511</p>
-          <p><span>Region: </span>Europe</p>
-          <p><span>Sub Region: </span>Western Europe</p>
-          <p><span>Capital: </span>Brusseis</p>
+          <p><span>Native Name: </span>{{nativeName}}</p>
+          <p><span>Population: </span>{{population}}</p>
+          <p><span>Region: </span>{{region}}</p>
+          <p><span>Sub Region: </span>{{subRegion}}</p>
+          <p><span>Capital: </span>{{capital}}</p>
         </div>
         <div class="secondaryInfos">
-          <p><span>Top Level Domain: </span>.be</p>
-          <p><span>Currencies: </span>Euro</p>
-          <p><span>Languages: </span>Dutch, French, German</p>
+          <p><span>Top Level Domain: </span>{{topLevelDomain[0]}}</p>
+          <div>
+            <p>Currencies:</p><span *ngFor="let currencie of currencies">{{currencie}}</span>
+          </div>
+          <div>
+            <p>Languages:</p><span *ngFor="let language of languages">{{language}}</span>
+          </div>
         </div>
       </div>
       <div class="container_borderCountries">
         <p class="border">Border Countries:</p>
         <div class="borderCountries">
-          <a href="">France</a>
-          <a href="">Germany</a>
-          <a href="">Netherlands</a>
+          <a *ngFor="let border of borders" [routerLink]="['../', border] ">{{border}}</a>
         </div>
       </div>
     </div>

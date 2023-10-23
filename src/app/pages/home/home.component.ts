@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CardModel } from 'src/app/models/cardModel';
+import { CardService } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  cards: CardModel[] = []
+
+  constructor(cardService: CardService) {
+    this.cards = cardService.getCards();
+    console.log(this.cards);
+
+  }
 
   ngOnInit(): void {
   }

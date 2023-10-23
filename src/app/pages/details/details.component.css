@@ -56,6 +56,18 @@
   box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
 }
 
+.secondaryInfos > div {
+  display: flex;
+}
+
+.secondaryInfos > div > p {
+  font-weight: 600;
+}
+
+.secondaryInfos > div > span {
+  margin-left: 0.5rem;
+}
+
 @media screen and (min-width: 1440px) {
   .container {
     padding: 3rem 5rem;

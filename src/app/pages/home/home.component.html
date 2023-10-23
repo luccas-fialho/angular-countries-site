@@ -14,13 +14,13 @@
     </select>
   </div>
   <div class="cards">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <app-card *ngFor="let country of cards"
+      [flag]="country.flag"
+      [name]="country.name"
+      [population]="country.population"
+      [region]="country.region"
+      [capital]="country.capital"
+      [code]="country.code"
+    ></app-card>
   </div>
 </div>
