@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { filter } from 'rxjs';
 import { CardModel } from 'src/app/models/cardModel';
 import { CardService } from 'src/app/services/card.service';
 
@@ -10,14 +11,25 @@ import { CardService } from 'src/app/services/card.service';
 export class HomeComponent implements OnInit {
 
   cards: CardModel[] = []
+  backup: CardModel[] = []
+
+  region: string = '';
+  search: string = '';
 
   constructor(cardService: CardService) {
     this.cards = cardService.getCards();
-    console.log(this.cards);
-
+    this.backup = cardService.getCards();
   }
 
   ngOnInit(): void {
   }
 
+  filterByRegion() {
+    if(this.region == '') this.cards = this.backup;
+    else this.cards = this.backup.filter(card => card.region == this.region)
+  }
+
+  filterBySearch() {
+    this.cards = this.backup.filter(card => card.name.toLowerCase().startsWith(this.search.toLowerCase()))
+  }
 }
