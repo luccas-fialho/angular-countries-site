@@ -1,10 +1,15 @@
+.dark-mode {
+  background-color: var(--dark-elements);
+  color: white;
+  fill: #ffffff;
+}
+
 .container {
   padding: 2rem 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-elements);
-  box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
 }
 
 .title {

@@ -1,3 +1,26 @@
+.light {
+  background-color: var(--primary-elements);
+}
+
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: white;
+}
+
+.dark-mode-el {
+  background-color: var(--dark-elements);
+  color: white;
+  fill: #ffffff;
+}
+
+.dark-search::placeholder {
+  color: white;
+}
+
+.container {
+  min-height: 100dvh;
+}
+
 .searchAndFilter {
   display: flex;
   flex-direction: column;
@@ -8,7 +31,6 @@
   display: flex;
   align-items: center;
   padding: 1rem 1.5rem;
-  background-color: var(--primary-elements);
 }
 
 .search {
@@ -16,11 +38,6 @@
   outline: none;
   width: 100%;
   margin-left: 10px;
-  color: var(--light-input);
-}
-
-.searchInput > svg > path {
-  fill: var(--light-input);
 }
 
 #filter {
@@ -36,7 +53,6 @@
   padding: 2rem 3rem;
 }
 
-
 @media screen and (min-width: 1440px) {
   .container {
     padding: 3rem 5rem;
@@ -50,7 +66,7 @@
   }
 
   .searchInput {
-    box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
   }
 
   .search {
@@ -60,7 +76,7 @@
   #filter {
     width: 200px;
     margin: 0;
-    box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
   }
 
   .cards {

@@ -6,12 +6,11 @@ import { DetailService } from 'src/app/services/detail.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-
-  details: DetailModel[] = []
-  private code: string | null = ''
+  details: DetailModel[] = [];
+  private code: string | null = '';
 
   flag: string = '';
   name: string = '';
@@ -25,32 +24,29 @@ export class DetailsComponent implements OnInit {
   languages: string[] = [];
   borders: string[] = [];
 
+  isDarkMode: boolean = false;
+  onDarkModeBg: string = '';
+  onDarkModeEl: string = 'light';
 
   constructor(detailService: DetailService, private route: ActivatedRoute) {
     this.details = detailService.getAllDetails();
+    localStorage.setItem('isDarkmode', 'false');
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(value =>
-      this.code = value.get("code")
-    )
+    this.route.paramMap.subscribe((value) => (this.code = value.get('code')));
 
-    this.setValueToComponents(this.code)
+    this.setValueToComponents(this.code);
   }
 
   ngDoCheck(): void {
-    this.route.paramMap.subscribe(value =>
-      this.code = value.get("code")
-    )
+    this.route.paramMap.subscribe((value) => (this.code = value.get('code')));
 
-    this.setValueToComponents(this.code)
+    this.setValueToComponents(this.code);
   }
 
-  setValueToComponents(code:string | null) {
-    const result = this.details.filter( country => country.code == code)[0]
-
-    console.log(result);
-
+  setValueToComponents(code: string | null) {
+    const result = this.details.filter((country) => country.code == code)[0];
 
     this.flag = result.flag;
     this.name = result.name;
@@ -65,4 +61,15 @@ export class DetailsComponent implements OnInit {
     this.borders = result.borders;
   }
 
+  darkMode() {
+    this.isDarkMode = !this.isDarkMode;
+
+    if (this.isDarkMode) {
+      this.onDarkModeBg = 'dark-mode';
+      this.onDarkModeEl = 'dark-mode-el';
+    } else {
+      this.onDarkModeBg = '';
+      this.onDarkModeEl = 'light';
+    }
+  }
 }

@@ -1,34 +1,57 @@
-<div class="container">
-  <button class="backBtn" routerLink="/">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M360-240 120-480l240-240 56 56-144 144h568v80H272l144 144-56 56Z"/></svg>
+<app-menu (darkModeClicked)="darkMode()"></app-menu>
+<div class="container" [ngClass]="onDarkModeBg">
+  <button class="backBtn" routerLink="/" [ngClass]="onDarkModeEl">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+    >
+      <path
+        d="M360-240 120-480l240-240 56 56-144 144h568v80H272l144 144-56 56Z"
+      />
+    </svg>
     <span>Back</span>
   </button>
   <div class="countryDetails">
-    <img [src]="flag" alt="" class="countryFlag">
+    <img [src]="flag" alt="" class="countryFlag" />
     <div class="countryInfos">
-      <p class="countryName">{{name}}</p>
+      <p class="countryName">{{ name }}</p>
       <div>
         <div class="firstInfos">
-          <p><span>Native Name: </span>{{nativeName}}</p>
-          <p><span>Population: </span>{{population}}</p>
-          <p><span>Region: </span>{{region}}</p>
-          <p><span>Sub Region: </span>{{subRegion}}</p>
-          <p><span>Capital: </span>{{capital}}</p>
+          <p><span>Native Name: </span>{{ nativeName }}</p>
+          <p>
+            <span>Population: </span>{{ population.toLocaleString("en-US") }}
+          </p>
+          <p><span>Region: </span>{{ region }}</p>
+          <p><span>Sub Region: </span>{{ subRegion }}</p>
+          <p><span>Capital: </span>{{ capital }}</p>
         </div>
         <div class="secondaryInfos">
-          <p><span>Top Level Domain: </span>{{topLevelDomain[0]}}</p>
+          <p><span>Top Level Domain: </span>{{ topLevelDomain[0] }}</p>
           <div>
-            <p>Currencies:</p><span *ngFor="let currencie of currencies">{{currencie}}</span>
+            <p>Currencies:</p>
+            <span *ngFor="let currencie of currencies; last as isLast"
+              >{{ currencie }}<span *ngIf="!isLast">,</span></span
+            >
           </div>
           <div>
-            <p>Languages:</p><span *ngFor="let language of languages">{{language}}</span>
+            <p>Languages:</p>
+            <span *ngFor="let language of languages; last as isLast"
+              >{{ language }}<span *ngIf="!isLast">,</span></span
+            >
           </div>
         </div>
       </div>
       <div class="container_borderCountries">
         <p class="border">Border Countries:</p>
         <div class="borderCountries">
-          <a *ngFor="let border of borders" [routerLink]="['../', border] ">{{border}}</a>
+          <a
+            *ngFor="let border of borders"
+            [routerLink]="['../', border]"
+            [ngClass]="onDarkModeEl"
+            >{{ border }}</a
+          >
         </div>
       </div>
     </div>

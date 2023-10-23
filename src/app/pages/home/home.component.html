@@ -1,10 +1,35 @@
-<div class="container">
+<app-menu (darkModeClicked)="darkMode()"></app-menu>
+<div class="container" [ngClass]="onDarkModeBg">
   <div class="searchAndFilter">
-    <div class="searchInput">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" fill=""/></svg>
-      <input type="text" class="search" placeholder="Search for a country..." [(ngModel)]="search" (ngModelChange)="filterBySearch()"/>
+    <div class="searchInput" [ngClass]="onDarkModeEl">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
+      >
+        <path
+          d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+          fill=""
+        />
+      </svg>
+      <input
+        type="text"
+        class="search"
+        placeholder="Search for a country..."
+        [(ngModel)]="search"
+        (ngModelChange)="filterBySearch()"
+        [ngClass]="onDarkModeEl"
+      />
     </div>
-    <select name="regions" id="filter" type="string" [(ngModel)]="region" (ngModelChange)="filterByRegion()">
+    <select
+      name="regions"
+      id="filter"
+      type="string"
+      [(ngModel)]="region"
+      (ngModelChange)="filterByRegion()"
+      [ngClass]="onDarkModeEl"
+    >
       <option value="">Filter by Region</option>
       <option value="Africa">Africa</option>
       <option value="Americas">America</option>
@@ -14,13 +39,15 @@
     </select>
   </div>
   <div class="cards">
-    <app-card *ngFor="let country of cards"
+    <app-card
+      *ngFor="let country of cards"
       [flag]="country.flag"
       [name]="country.name"
       [population]="country.population"
       [region]="country.region"
       [capital]="country.capital"
       [code]="country.code"
+      [isDarkMode]="isDarkMode"
     ></app-card>
   </div>
 </div>

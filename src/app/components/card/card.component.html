@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container" [ngClass]="onDarkMode">
   <a [routerLink]="['details', code]" class="countryFlag"
     ><img src="{{ flag }}" alt=""
   /></a>
   <div class="countryInfos">
     <p class="countryName">{{ name }}</p>
-    <p class="countryPopulation"><span>Population: </span>{{ population }}</p>
+    <p class="countryPopulation">
+      <span>Population: </span>{{ population.toLocaleString("en-US") }}
+    </p>
     <p class="countryRegion"><span>Region: </span>{{ region }}</p>
     <p class="countryCapital"><span>Capital: </span>{{ capital }}</p>
   </div>
